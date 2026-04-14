@@ -27,18 +27,21 @@ export type AggregateCast = {
 export type CastMinAggregateOutputType = {
   id: string | null
   name: string | null
+  intro: string | null
   profileUrl: string | null
 }
 
 export type CastMaxAggregateOutputType = {
   id: string | null
   name: string | null
+  intro: string | null
   profileUrl: string | null
 }
 
 export type CastCountAggregateOutputType = {
   id: number
   name: number
+  intro: number
   profileUrl: number
   _all: number
 }
@@ -47,18 +50,21 @@ export type CastCountAggregateOutputType = {
 export type CastMinAggregateInputType = {
   id?: true
   name?: true
+  intro?: true
   profileUrl?: true
 }
 
 export type CastMaxAggregateInputType = {
   id?: true
   name?: true
+  intro?: true
   profileUrl?: true
 }
 
 export type CastCountAggregateInputType = {
   id?: true
   name?: true
+  intro?: true
   profileUrl?: true
   _all?: true
 }
@@ -138,6 +144,7 @@ export type CastGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type CastGroupByOutputType = {
   id: string
   name: string
+  intro: string | null
   profileUrl: string | null
   _count: CastCountAggregateOutputType | null
   _min: CastMinAggregateOutputType | null
@@ -165,6 +172,7 @@ export type CastWhereInput = {
   NOT?: Prisma.CastWhereInput | Prisma.CastWhereInput[]
   id?: Prisma.StringFilter<"Cast"> | string
   name?: Prisma.StringFilter<"Cast"> | string
+  intro?: Prisma.StringNullableFilter<"Cast"> | string | null
   profileUrl?: Prisma.StringNullableFilter<"Cast"> | string | null
   contents?: Prisma.ContentCastListRelationFilter
 }
@@ -172,6 +180,7 @@ export type CastWhereInput = {
 export type CastOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  intro?: Prisma.SortOrderInput | Prisma.SortOrder
   profileUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   contents?: Prisma.ContentCastOrderByRelationAggregateInput
 }
@@ -182,6 +191,7 @@ export type CastWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.CastWhereInput[]
   NOT?: Prisma.CastWhereInput | Prisma.CastWhereInput[]
   name?: Prisma.StringFilter<"Cast"> | string
+  intro?: Prisma.StringNullableFilter<"Cast"> | string | null
   profileUrl?: Prisma.StringNullableFilter<"Cast"> | string | null
   contents?: Prisma.ContentCastListRelationFilter
 }, "id">
@@ -189,6 +199,7 @@ export type CastWhereUniqueInput = Prisma.AtLeast<{
 export type CastOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  intro?: Prisma.SortOrderInput | Prisma.SortOrder
   profileUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CastCountOrderByAggregateInput
   _max?: Prisma.CastMaxOrderByAggregateInput
@@ -201,12 +212,14 @@ export type CastScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CastScalarWhereWithAggregatesInput | Prisma.CastScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Cast"> | string
   name?: Prisma.StringWithAggregatesFilter<"Cast"> | string
+  intro?: Prisma.StringNullableWithAggregatesFilter<"Cast"> | string | null
   profileUrl?: Prisma.StringNullableWithAggregatesFilter<"Cast"> | string | null
 }
 
 export type CastCreateInput = {
   id?: string
   name: string
+  intro?: string | null
   profileUrl?: string | null
   contents?: Prisma.ContentCastCreateNestedManyWithoutCastInput
 }
@@ -214,6 +227,7 @@ export type CastCreateInput = {
 export type CastUncheckedCreateInput = {
   id?: string
   name: string
+  intro?: string | null
   profileUrl?: string | null
   contents?: Prisma.ContentCastUncheckedCreateNestedManyWithoutCastInput
 }
@@ -221,6 +235,7 @@ export type CastUncheckedCreateInput = {
 export type CastUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  intro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contents?: Prisma.ContentCastUpdateManyWithoutCastNestedInput
 }
@@ -228,6 +243,7 @@ export type CastUpdateInput = {
 export type CastUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  intro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contents?: Prisma.ContentCastUncheckedUpdateManyWithoutCastNestedInput
 }
@@ -235,36 +251,42 @@ export type CastUncheckedUpdateInput = {
 export type CastCreateManyInput = {
   id?: string
   name: string
+  intro?: string | null
   profileUrl?: string | null
 }
 
 export type CastUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  intro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CastUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  intro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CastCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  intro?: Prisma.SortOrder
   profileUrl?: Prisma.SortOrder
 }
 
 export type CastMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  intro?: Prisma.SortOrder
   profileUrl?: Prisma.SortOrder
 }
 
 export type CastMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  intro?: Prisma.SortOrder
   profileUrl?: Prisma.SortOrder
 }
 
@@ -298,12 +320,14 @@ export type CastUpdateOneRequiredWithoutContentsNestedInput = {
 export type CastCreateWithoutContentsInput = {
   id?: string
   name: string
+  intro?: string | null
   profileUrl?: string | null
 }
 
 export type CastUncheckedCreateWithoutContentsInput = {
   id?: string
   name: string
+  intro?: string | null
   profileUrl?: string | null
 }
 
@@ -326,12 +350,14 @@ export type CastUpdateToOneWithWhereWithoutContentsInput = {
 export type CastUpdateWithoutContentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  intro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CastUncheckedUpdateWithoutContentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  intro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profileUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -369,6 +395,7 @@ export type CastCountOutputTypeCountContentsArgs<ExtArgs extends runtime.Types.E
 export type CastSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  intro?: boolean
   profileUrl?: boolean
   contents?: boolean | Prisma.Cast$contentsArgs<ExtArgs>
   _count?: boolean | Prisma.CastCountOutputTypeDefaultArgs<ExtArgs>
@@ -377,22 +404,25 @@ export type CastSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 export type CastSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  intro?: boolean
   profileUrl?: boolean
 }, ExtArgs["result"]["cast"]>
 
 export type CastSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  intro?: boolean
   profileUrl?: boolean
 }, ExtArgs["result"]["cast"]>
 
 export type CastSelectScalar = {
   id?: boolean
   name?: boolean
+  intro?: boolean
   profileUrl?: boolean
 }
 
-export type CastOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "profileUrl", ExtArgs["result"]["cast"]>
+export type CastOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "intro" | "profileUrl", ExtArgs["result"]["cast"]>
 export type CastInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   contents?: boolean | Prisma.Cast$contentsArgs<ExtArgs>
   _count?: boolean | Prisma.CastCountOutputTypeDefaultArgs<ExtArgs>
@@ -408,6 +438,7 @@ export type $CastPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
+    intro: string | null
     profileUrl: string | null
   }, ExtArgs["result"]["cast"]>
   composites: {}
@@ -835,6 +866,7 @@ export interface Prisma__CastClient<T, Null = never, ExtArgs extends runtime.Typ
 export interface CastFieldRefs {
   readonly id: Prisma.FieldRef<"Cast", 'String'>
   readonly name: Prisma.FieldRef<"Cast", 'String'>
+  readonly intro: Prisma.FieldRef<"Cast", 'String'>
   readonly profileUrl: Prisma.FieldRef<"Cast", 'String'>
 }
     

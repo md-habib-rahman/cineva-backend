@@ -1,6 +1,7 @@
 model Cast {
     id         String  @id @default(cuid())
     name       String
+    intro      String?
     profileUrl String?
 
     contents ContentCast[]
