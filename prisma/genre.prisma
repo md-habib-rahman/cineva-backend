@@ -1,0 +1,15 @@
+model Genre {
+    id       String         @id @default(cuid())
+    name     String         @unique
+    contents ContentGenre[]
+}
+
+model ContentGenre {
+    contentId String
+    genreId   String
+
+    content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+    genre   Genre   @relation(fields: [genreId], references: [id])
+
+    @@id([contentId, genreId])
+}

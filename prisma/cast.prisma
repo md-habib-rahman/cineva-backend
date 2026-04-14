@@ -1,0 +1,18 @@
+model Cast {
+    id         String  @id @default(cuid())
+    name       String
+    profileUrl String?
+
+    contents ContentCast[]
+}
+
+model ContentCast {
+    contentId String
+    castId    String
+    role      String?
+
+    content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+    cast    Cast    @relation(fields: [castId], references: [id])
+
+    @@id([contentId, castId])
+}

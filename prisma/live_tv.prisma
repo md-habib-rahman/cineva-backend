@@ -1,0 +1,18 @@
+model LiveTv {
+    id        String @id @default(cuid())
+    contentId String @unique
+
+    videoUrl String
+
+    language String?
+
+    isActive Boolean @default(true)
+
+    content Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([isActive])
+    @@index([contentId])
+}

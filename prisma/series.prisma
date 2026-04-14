@@ -1,0 +1,64 @@
+model Series {
+    id        String @id @default(cuid())
+    contentId String @unique
+
+    isPublished Boolean @default(false)
+
+    content Content  @relation(fields: [contentId], references: [id], onDelete: Cascade)
+    seasons Season[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([contentId])
+}
+
+model Season {
+    id       String @id @default(cuid())
+    seriesId String
+
+    seasonNumber Int
+    title        String?
+    description  String?
+
+    posterUrl    String?
+    thumbnailUrl String?
+    trailerUrl   String?
+
+    isPublished Boolean @default(false)
+
+    series   Series    @relation(fields: [seriesId], references: [id], onDelete: Cascade)
+    episodes Episode[]
+
+    releaseDate DateTime?
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+
+    @@unique([seriesId, seasonNumber])
+}
+
+model Episode {
+    id       String @id @default(cuid())
+    seasonId String
+
+    episodeNumber Int
+    title         String
+    description   String?
+
+    videoUrl     String
+    duration     Int?
+    posterUrl    String?
+    thumbnailUrl String?
+
+    isPublished Boolean   @default(false)
+    releaseDate DateTime?
+    viewCount   Int       @default(0)
+
+    season Season @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([seasonId, episodeNumber])
+    @@index([releaseDate])
+}
