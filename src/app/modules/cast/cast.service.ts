@@ -1,5 +1,7 @@
-import { prisma } from "../../app/lib/prisma";
-import { Cast } from "../../generated/prisma/client";
+
+
+import { Cast } from "../../../generated/prisma/client";
+import { prisma } from "../../lib/prisma";
 
 const createCast = async (payload: Cast): Promise<Cast> => {
 	const cast = await prisma.cast.create({

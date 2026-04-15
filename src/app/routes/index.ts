@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { castRouter } from "../../modules/cast/cast.router";
+import { castRouter } from "../modules/cast/cast.router";
 
 const router = Router()
 
