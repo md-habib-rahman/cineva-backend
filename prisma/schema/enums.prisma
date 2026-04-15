@@ -1,0 +1,22 @@
+enum Role {
+    ADMIN
+    USER
+}
+
+enum userStatus {
+    ACTIVE
+    BLOCKED
+    DELETED
+}
+
+enum ContentType {
+    MOVIE
+    SERIES
+    DRAMA
+    LIVE_TV
+}
+
+enum AccessType {
+    AVOD
+    SVOD
+}

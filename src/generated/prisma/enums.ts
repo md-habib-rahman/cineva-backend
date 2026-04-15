@@ -9,6 +9,23 @@
 * 🟢 You can import this file directly.
 */
 
+export const Role = {
+  ADMIN: 'ADMIN',
+  USER: 'USER'
+} as const
+
+export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const userStatus = {
+  ACTIVE: 'ACTIVE',
+  BLOCKED: 'BLOCKED',
+  DELETED: 'DELETED'
+} as const
+
+export type userStatus = (typeof userStatus)[keyof typeof userStatus]
+
+
 export const ContentType = {
   MOVIE: 'MOVIE',
   SERIES: 'SERIES',

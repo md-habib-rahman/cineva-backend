@@ -295,14 +295,6 @@ export type CastScalarRelationFilter = {
   isNot?: Prisma.CastWhereInput
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type CastCreateNestedOneWithoutContentsInput = {
   create?: Prisma.XOR<Prisma.CastCreateWithoutContentsInput, Prisma.CastUncheckedCreateWithoutContentsInput>
   connectOrCreate?: Prisma.CastCreateOrConnectWithoutContentsInput
