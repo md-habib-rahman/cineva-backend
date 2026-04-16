@@ -1,5 +1,6 @@
 import { userStatus } from "../../../generated/prisma/enums";
 import { auth } from "../../lib/auth";
+import { tokenUtils } from "../../utils/token";
 
 interface RegisterUserPayload {
 	name: string;
@@ -46,7 +47,27 @@ const loginUser = async (payload: ILoginUserPayload) => {
 		throw new Error("User is deleted")
 	}
 
-	return data;
+	const accessToken = tokenUtils.getAccessToken({
+		userId: data.user.id,
+		email: data.user.email,
+		role: data.user.role,
+		name: data.user.name,
+		emailverified: data.user.emailVerified,
+		status: data.user.status,
+		isDeleted: data.user.isDeleted
+	})
+
+	const refreshToken = tokenUtils.getRefreshToken({
+		userId: data.user.id,
+		email: data.user.email,
+		role: data.user.role,
+		name: data.user.name,
+		emailverified: data.user.emailVerified,
+		status: data.user.status,
+		isDeleted: data.user.isDeleted
+	})
+
+	return { data, accessToken, refreshToken };
 }
 
 export const authService = {
