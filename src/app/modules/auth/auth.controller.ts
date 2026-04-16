@@ -3,6 +3,7 @@ import { catchAsync } from "../../shared/catchAsync";
 import { authService } from "./auth.service";
 import { sendResponse } from "../../shared/sendResponse";
 import { tokenUtils } from "../../utils/token";
+import { cookieUtils } from "../../utils/cookie";
 
 
 const registerUser = catchAsync(async (req: Request, res: Response) => {
@@ -97,6 +98,34 @@ const changePassword = catchAsync(
 	}
 )
 
+const logoutUser = catchAsync(async (req: Request, res: Response) => {
+	const betterAuthSessionToken = req.cookies["better-auth.session_token"]
+	const result = await authService.logoutUser(betterAuthSessionToken)
+
+	cookieUtils.clearCookie(res, 'accessToken', {
+		httpOnly: true,
+		secure: true,
+		sameSite: "none"
+	})
+	cookieUtils.clearCookie(res, 'refreshToken', {
+		httpOnly: true,
+		secure: true,
+		sameSite: "none"
+	})
+	cookieUtils.clearCookie(res, "better-auth.session_token", {
+		httpOnly: true,
+		secure: true,
+		sameSite: "none"
+	})
+
+	sendResponse(res, {
+		httpStatus: 200,
+		success: true,
+		message: "User logged out successfully",
+		data: result
+	})
+})
+
 
 
 export const authController = {
@@ -104,5 +133,6 @@ export const authController = {
 	loginUser,
 	getMe,
 	getNewToken,
-	changePassword
+	changePassword,
+	logoutUser
 }
