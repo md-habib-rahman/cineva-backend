@@ -5,7 +5,8 @@ const setCookie = (res: Response, key: string, value: string, options: CookieOpt
 	res.cookie(key, value, options);
 }
 
-const getCookie = (req: Request, key: string, options: CookieOptions) => {
+const getCookie = (req: Request, key: string) => {
+	
 	return req.cookies[key];
 }
 

@@ -1,7 +1,7 @@
 model Content {
     id          String  @id @default(cuid())
     title       String
-    slug        String  @unique
+    
     description String?
 
     type       ContentType
@@ -16,7 +16,7 @@ model Content {
     ageRating String?
 
     releaseDate DateTime?
-    duration    Int?
+    
 
     isPublished Boolean   @default(false)
     publishedAt DateTime?

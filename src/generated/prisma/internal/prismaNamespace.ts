@@ -1802,7 +1802,6 @@ export type ContentCastScalarFieldEnum = (typeof ContentCastScalarFieldEnum)[key
 export const ContentScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  slug: 'slug',
   description: 'description',
   type: 'type',
   accessType: 'accessType',
@@ -1813,7 +1812,6 @@ export const ContentScalarFieldEnum = {
   country: 'country',
   ageRating: 'ageRating',
   releaseDate: 'releaseDate',
-  duration: 'duration',
   isPublished: 'isPublished',
   publishedAt: 'publishedAt',
   avgRating: 'avgRating',
@@ -2081,20 +2079,6 @@ export type ListEnumAccessTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$P
 
 
 /**
- * Reference to a field of type 'Int'
- */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-/**
- * Reference to a field of type 'Int[]'
- */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -2105,6 +2089,20 @@ export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, '
  * Reference to a field of type 'Float[]'
  */
 export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 /**

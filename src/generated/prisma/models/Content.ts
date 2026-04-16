@@ -27,13 +27,11 @@ export type AggregateContent = {
 }
 
 export type ContentAvgAggregateOutputType = {
-  duration: number | null
   avgRating: number | null
   totalRatings: number | null
 }
 
 export type ContentSumAggregateOutputType = {
-  duration: number | null
   avgRating: number | null
   totalRatings: number | null
 }
@@ -41,7 +39,6 @@ export type ContentSumAggregateOutputType = {
 export type ContentMinAggregateOutputType = {
   id: string | null
   title: string | null
-  slug: string | null
   description: string | null
   type: $Enums.ContentType | null
   accessType: $Enums.AccessType | null
@@ -52,7 +49,6 @@ export type ContentMinAggregateOutputType = {
   country: string | null
   ageRating: string | null
   releaseDate: Date | null
-  duration: number | null
   isPublished: boolean | null
   publishedAt: Date | null
   avgRating: number | null
@@ -64,7 +60,6 @@ export type ContentMinAggregateOutputType = {
 export type ContentMaxAggregateOutputType = {
   id: string | null
   title: string | null
-  slug: string | null
   description: string | null
   type: $Enums.ContentType | null
   accessType: $Enums.AccessType | null
@@ -75,7 +70,6 @@ export type ContentMaxAggregateOutputType = {
   country: string | null
   ageRating: string | null
   releaseDate: Date | null
-  duration: number | null
   isPublished: boolean | null
   publishedAt: Date | null
   avgRating: number | null
@@ -87,7 +81,6 @@ export type ContentMaxAggregateOutputType = {
 export type ContentCountAggregateOutputType = {
   id: number
   title: number
-  slug: number
   description: number
   type: number
   accessType: number
@@ -98,7 +91,6 @@ export type ContentCountAggregateOutputType = {
   country: number
   ageRating: number
   releaseDate: number
-  duration: number
   isPublished: number
   publishedAt: number
   avgRating: number
@@ -110,13 +102,11 @@ export type ContentCountAggregateOutputType = {
 
 
 export type ContentAvgAggregateInputType = {
-  duration?: true
   avgRating?: true
   totalRatings?: true
 }
 
 export type ContentSumAggregateInputType = {
-  duration?: true
   avgRating?: true
   totalRatings?: true
 }
@@ -124,7 +114,6 @@ export type ContentSumAggregateInputType = {
 export type ContentMinAggregateInputType = {
   id?: true
   title?: true
-  slug?: true
   description?: true
   type?: true
   accessType?: true
@@ -135,7 +124,6 @@ export type ContentMinAggregateInputType = {
   country?: true
   ageRating?: true
   releaseDate?: true
-  duration?: true
   isPublished?: true
   publishedAt?: true
   avgRating?: true
@@ -147,7 +135,6 @@ export type ContentMinAggregateInputType = {
 export type ContentMaxAggregateInputType = {
   id?: true
   title?: true
-  slug?: true
   description?: true
   type?: true
   accessType?: true
@@ -158,7 +145,6 @@ export type ContentMaxAggregateInputType = {
   country?: true
   ageRating?: true
   releaseDate?: true
-  duration?: true
   isPublished?: true
   publishedAt?: true
   avgRating?: true
@@ -170,7 +156,6 @@ export type ContentMaxAggregateInputType = {
 export type ContentCountAggregateInputType = {
   id?: true
   title?: true
-  slug?: true
   description?: true
   type?: true
   accessType?: true
@@ -181,7 +166,6 @@ export type ContentCountAggregateInputType = {
   country?: true
   ageRating?: true
   releaseDate?: true
-  duration?: true
   isPublished?: true
   publishedAt?: true
   avgRating?: true
@@ -280,7 +264,6 @@ export type ContentGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type ContentGroupByOutputType = {
   id: string
   title: string
-  slug: string
   description: string | null
   type: $Enums.ContentType
   accessType: $Enums.AccessType
@@ -291,7 +274,6 @@ export type ContentGroupByOutputType = {
   country: string | null
   ageRating: string | null
   releaseDate: Date | null
-  duration: number | null
   isPublished: boolean
   publishedAt: Date | null
   avgRating: number
@@ -326,7 +308,6 @@ export type ContentWhereInput = {
   NOT?: Prisma.ContentWhereInput | Prisma.ContentWhereInput[]
   id?: Prisma.StringFilter<"Content"> | string
   title?: Prisma.StringFilter<"Content"> | string
-  slug?: Prisma.StringFilter<"Content"> | string
   description?: Prisma.StringNullableFilter<"Content"> | string | null
   type?: Prisma.EnumContentTypeFilter<"Content"> | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFilter<"Content"> | $Enums.AccessType
@@ -337,7 +318,6 @@ export type ContentWhereInput = {
   country?: Prisma.StringNullableFilter<"Content"> | string | null
   ageRating?: Prisma.StringNullableFilter<"Content"> | string | null
   releaseDate?: Prisma.DateTimeNullableFilter<"Content"> | Date | string | null
-  duration?: Prisma.IntNullableFilter<"Content"> | number | null
   isPublished?: Prisma.BoolFilter<"Content"> | boolean
   publishedAt?: Prisma.DateTimeNullableFilter<"Content"> | Date | string | null
   avgRating?: Prisma.FloatFilter<"Content"> | number
@@ -357,7 +337,6 @@ export type ContentWhereInput = {
 export type ContentOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  slug?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   type?: Prisma.SortOrder
   accessType?: Prisma.SortOrder
@@ -368,7 +347,6 @@ export type ContentOrderByWithRelationInput = {
   country?: Prisma.SortOrderInput | Prisma.SortOrder
   ageRating?: Prisma.SortOrderInput | Prisma.SortOrder
   releaseDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  duration?: Prisma.SortOrderInput | Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   avgRating?: Prisma.SortOrder
@@ -387,7 +365,6 @@ export type ContentOrderByWithRelationInput = {
 
 export type ContentWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  slug?: string
   AND?: Prisma.ContentWhereInput | Prisma.ContentWhereInput[]
   OR?: Prisma.ContentWhereInput[]
   NOT?: Prisma.ContentWhereInput | Prisma.ContentWhereInput[]
@@ -402,7 +379,6 @@ export type ContentWhereUniqueInput = Prisma.AtLeast<{
   country?: Prisma.StringNullableFilter<"Content"> | string | null
   ageRating?: Prisma.StringNullableFilter<"Content"> | string | null
   releaseDate?: Prisma.DateTimeNullableFilter<"Content"> | Date | string | null
-  duration?: Prisma.IntNullableFilter<"Content"> | number | null
   isPublished?: Prisma.BoolFilter<"Content"> | boolean
   publishedAt?: Prisma.DateTimeNullableFilter<"Content"> | Date | string | null
   avgRating?: Prisma.FloatFilter<"Content"> | number
@@ -417,12 +393,11 @@ export type ContentWhereUniqueInput = Prisma.AtLeast<{
   series?: Prisma.XOR<Prisma.SeriesNullableScalarRelationFilter, Prisma.SeriesWhereInput> | null
   movie?: Prisma.XOR<Prisma.MovieNullableScalarRelationFilter, Prisma.MovieWhereInput> | null
   drama?: Prisma.XOR<Prisma.DramaNullableScalarRelationFilter, Prisma.DramaWhereInput> | null
-}, "id" | "slug">
+}, "id">
 
 export type ContentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  slug?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   type?: Prisma.SortOrder
   accessType?: Prisma.SortOrder
@@ -433,7 +408,6 @@ export type ContentOrderByWithAggregationInput = {
   country?: Prisma.SortOrderInput | Prisma.SortOrder
   ageRating?: Prisma.SortOrderInput | Prisma.SortOrder
   releaseDate?: Prisma.SortOrderInput | Prisma.SortOrder
-  duration?: Prisma.SortOrderInput | Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   avgRating?: Prisma.SortOrder
@@ -453,7 +427,6 @@ export type ContentScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ContentScalarWhereWithAggregatesInput | Prisma.ContentScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Content"> | string
   title?: Prisma.StringWithAggregatesFilter<"Content"> | string
-  slug?: Prisma.StringWithAggregatesFilter<"Content"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Content"> | string | null
   type?: Prisma.EnumContentTypeWithAggregatesFilter<"Content"> | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeWithAggregatesFilter<"Content"> | $Enums.AccessType
@@ -464,7 +437,6 @@ export type ContentScalarWhereWithAggregatesInput = {
   country?: Prisma.StringNullableWithAggregatesFilter<"Content"> | string | null
   ageRating?: Prisma.StringNullableWithAggregatesFilter<"Content"> | string | null
   releaseDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Content"> | Date | string | null
-  duration?: Prisma.IntNullableWithAggregatesFilter<"Content"> | number | null
   isPublished?: Prisma.BoolWithAggregatesFilter<"Content"> | boolean
   publishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Content"> | Date | string | null
   avgRating?: Prisma.FloatWithAggregatesFilter<"Content"> | number
@@ -476,7 +448,6 @@ export type ContentScalarWhereWithAggregatesInput = {
 export type ContentCreateInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -487,7 +458,6 @@ export type ContentCreateInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -507,7 +477,6 @@ export type ContentCreateInput = {
 export type ContentUncheckedCreateInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -518,7 +487,6 @@ export type ContentUncheckedCreateInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -538,7 +506,6 @@ export type ContentUncheckedCreateInput = {
 export type ContentUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -549,7 +516,6 @@ export type ContentUpdateInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -569,7 +535,6 @@ export type ContentUpdateInput = {
 export type ContentUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -580,7 +545,6 @@ export type ContentUncheckedUpdateInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -600,7 +564,6 @@ export type ContentUncheckedUpdateInput = {
 export type ContentCreateManyInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -611,7 +574,6 @@ export type ContentCreateManyInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -623,7 +585,6 @@ export type ContentCreateManyInput = {
 export type ContentUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -634,7 +595,6 @@ export type ContentUpdateManyMutationInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -646,7 +606,6 @@ export type ContentUpdateManyMutationInput = {
 export type ContentUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -657,7 +616,6 @@ export type ContentUncheckedUpdateManyInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -674,7 +632,6 @@ export type ContentScalarRelationFilter = {
 export type ContentCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   type?: Prisma.SortOrder
   accessType?: Prisma.SortOrder
@@ -685,7 +642,6 @@ export type ContentCountOrderByAggregateInput = {
   country?: Prisma.SortOrder
   ageRating?: Prisma.SortOrder
   releaseDate?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
   avgRating?: Prisma.SortOrder
@@ -695,7 +651,6 @@ export type ContentCountOrderByAggregateInput = {
 }
 
 export type ContentAvgOrderByAggregateInput = {
-  duration?: Prisma.SortOrder
   avgRating?: Prisma.SortOrder
   totalRatings?: Prisma.SortOrder
 }
@@ -703,7 +658,6 @@ export type ContentAvgOrderByAggregateInput = {
 export type ContentMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   type?: Prisma.SortOrder
   accessType?: Prisma.SortOrder
@@ -714,7 +668,6 @@ export type ContentMaxOrderByAggregateInput = {
   country?: Prisma.SortOrder
   ageRating?: Prisma.SortOrder
   releaseDate?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
   avgRating?: Prisma.SortOrder
@@ -726,7 +679,6 @@ export type ContentMaxOrderByAggregateInput = {
 export type ContentMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
-  slug?: Prisma.SortOrder
   description?: Prisma.SortOrder
   type?: Prisma.SortOrder
   accessType?: Prisma.SortOrder
@@ -737,7 +689,6 @@ export type ContentMinOrderByAggregateInput = {
   country?: Prisma.SortOrder
   ageRating?: Prisma.SortOrder
   releaseDate?: Prisma.SortOrder
-  duration?: Prisma.SortOrder
   isPublished?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
   avgRating?: Prisma.SortOrder
@@ -747,7 +698,6 @@ export type ContentMinOrderByAggregateInput = {
 }
 
 export type ContentSumOrderByAggregateInput = {
-  duration?: Prisma.SortOrder
   avgRating?: Prisma.SortOrder
   totalRatings?: Prisma.SortOrder
 }
@@ -772,14 +722,6 @@ export type EnumContentTypeFieldUpdateOperationsInput = {
 
 export type EnumAccessTypeFieldUpdateOperationsInput = {
   set?: $Enums.AccessType
-}
-
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type FloatFieldUpdateOperationsInput = {
@@ -899,7 +841,6 @@ export type ContentUpdateOneRequiredWithoutSeriesNestedInput = {
 export type ContentCreateWithoutCastInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -910,7 +851,6 @@ export type ContentCreateWithoutCastInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -929,7 +869,6 @@ export type ContentCreateWithoutCastInput = {
 export type ContentUncheckedCreateWithoutCastInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -940,7 +879,6 @@ export type ContentUncheckedCreateWithoutCastInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -975,7 +913,6 @@ export type ContentUpdateToOneWithWhereWithoutCastInput = {
 export type ContentUpdateWithoutCastInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -986,7 +923,6 @@ export type ContentUpdateWithoutCastInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1005,7 +941,6 @@ export type ContentUpdateWithoutCastInput = {
 export type ContentUncheckedUpdateWithoutCastInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1016,7 +951,6 @@ export type ContentUncheckedUpdateWithoutCastInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1035,7 +969,6 @@ export type ContentUncheckedUpdateWithoutCastInput = {
 export type ContentCreateWithoutDramaInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1046,7 +979,6 @@ export type ContentCreateWithoutDramaInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1065,7 +997,6 @@ export type ContentCreateWithoutDramaInput = {
 export type ContentUncheckedCreateWithoutDramaInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1076,7 +1007,6 @@ export type ContentUncheckedCreateWithoutDramaInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1111,7 +1041,6 @@ export type ContentUpdateToOneWithWhereWithoutDramaInput = {
 export type ContentUpdateWithoutDramaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1122,7 +1051,6 @@ export type ContentUpdateWithoutDramaInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1141,7 +1069,6 @@ export type ContentUpdateWithoutDramaInput = {
 export type ContentUncheckedUpdateWithoutDramaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1152,7 +1079,6 @@ export type ContentUncheckedUpdateWithoutDramaInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1171,7 +1097,6 @@ export type ContentUncheckedUpdateWithoutDramaInput = {
 export type ContentCreateWithoutGenresInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1182,7 +1107,6 @@ export type ContentCreateWithoutGenresInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1201,7 +1125,6 @@ export type ContentCreateWithoutGenresInput = {
 export type ContentUncheckedCreateWithoutGenresInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1212,7 +1135,6 @@ export type ContentUncheckedCreateWithoutGenresInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1247,7 +1169,6 @@ export type ContentUpdateToOneWithWhereWithoutGenresInput = {
 export type ContentUpdateWithoutGenresInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1258,7 +1179,6 @@ export type ContentUpdateWithoutGenresInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1277,7 +1197,6 @@ export type ContentUpdateWithoutGenresInput = {
 export type ContentUncheckedUpdateWithoutGenresInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1288,7 +1207,6 @@ export type ContentUncheckedUpdateWithoutGenresInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1307,7 +1225,6 @@ export type ContentUncheckedUpdateWithoutGenresInput = {
 export type ContentCreateWithoutLiveTvInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1318,7 +1235,6 @@ export type ContentCreateWithoutLiveTvInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1337,7 +1253,6 @@ export type ContentCreateWithoutLiveTvInput = {
 export type ContentUncheckedCreateWithoutLiveTvInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1348,7 +1263,6 @@ export type ContentUncheckedCreateWithoutLiveTvInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1383,7 +1297,6 @@ export type ContentUpdateToOneWithWhereWithoutLiveTvInput = {
 export type ContentUpdateWithoutLiveTvInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1394,7 +1307,6 @@ export type ContentUpdateWithoutLiveTvInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1413,7 +1325,6 @@ export type ContentUpdateWithoutLiveTvInput = {
 export type ContentUncheckedUpdateWithoutLiveTvInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1424,7 +1335,6 @@ export type ContentUncheckedUpdateWithoutLiveTvInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1443,7 +1353,6 @@ export type ContentUncheckedUpdateWithoutLiveTvInput = {
 export type ContentCreateWithoutMovieInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1454,7 +1363,6 @@ export type ContentCreateWithoutMovieInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1473,7 +1381,6 @@ export type ContentCreateWithoutMovieInput = {
 export type ContentUncheckedCreateWithoutMovieInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1484,7 +1391,6 @@ export type ContentUncheckedCreateWithoutMovieInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1519,7 +1425,6 @@ export type ContentUpdateToOneWithWhereWithoutMovieInput = {
 export type ContentUpdateWithoutMovieInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1530,7 +1435,6 @@ export type ContentUpdateWithoutMovieInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1549,7 +1453,6 @@ export type ContentUpdateWithoutMovieInput = {
 export type ContentUncheckedUpdateWithoutMovieInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1560,7 +1463,6 @@ export type ContentUncheckedUpdateWithoutMovieInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1579,7 +1481,6 @@ export type ContentUncheckedUpdateWithoutMovieInput = {
 export type ContentCreateWithoutRatingsInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1590,7 +1491,6 @@ export type ContentCreateWithoutRatingsInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1609,7 +1509,6 @@ export type ContentCreateWithoutRatingsInput = {
 export type ContentUncheckedCreateWithoutRatingsInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1620,7 +1519,6 @@ export type ContentUncheckedCreateWithoutRatingsInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1655,7 +1553,6 @@ export type ContentUpdateToOneWithWhereWithoutRatingsInput = {
 export type ContentUpdateWithoutRatingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1666,7 +1563,6 @@ export type ContentUpdateWithoutRatingsInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1685,7 +1581,6 @@ export type ContentUpdateWithoutRatingsInput = {
 export type ContentUncheckedUpdateWithoutRatingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1696,7 +1591,6 @@ export type ContentUncheckedUpdateWithoutRatingsInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1715,7 +1609,6 @@ export type ContentUncheckedUpdateWithoutRatingsInput = {
 export type ContentCreateWithoutReviewsInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1726,7 +1619,6 @@ export type ContentCreateWithoutReviewsInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1745,7 +1637,6 @@ export type ContentCreateWithoutReviewsInput = {
 export type ContentUncheckedCreateWithoutReviewsInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1756,7 +1647,6 @@ export type ContentUncheckedCreateWithoutReviewsInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1791,7 +1681,6 @@ export type ContentUpdateToOneWithWhereWithoutReviewsInput = {
 export type ContentUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1802,7 +1691,6 @@ export type ContentUpdateWithoutReviewsInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1821,7 +1709,6 @@ export type ContentUpdateWithoutReviewsInput = {
 export type ContentUncheckedUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1832,7 +1719,6 @@ export type ContentUncheckedUpdateWithoutReviewsInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1851,7 +1737,6 @@ export type ContentUncheckedUpdateWithoutReviewsInput = {
 export type ContentCreateWithoutSeriesInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1862,7 +1747,6 @@ export type ContentCreateWithoutSeriesInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1881,7 +1765,6 @@ export type ContentCreateWithoutSeriesInput = {
 export type ContentUncheckedCreateWithoutSeriesInput = {
   id?: string
   title: string
-  slug: string
   description?: string | null
   type: $Enums.ContentType
   accessType?: $Enums.AccessType
@@ -1892,7 +1775,6 @@ export type ContentUncheckedCreateWithoutSeriesInput = {
   country?: string | null
   ageRating?: string | null
   releaseDate?: Date | string | null
-  duration?: number | null
   isPublished?: boolean
   publishedAt?: Date | string | null
   avgRating?: number
@@ -1927,7 +1809,6 @@ export type ContentUpdateToOneWithWhereWithoutSeriesInput = {
 export type ContentUpdateWithoutSeriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1938,7 +1819,6 @@ export type ContentUpdateWithoutSeriesInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -1957,7 +1837,6 @@ export type ContentUpdateWithoutSeriesInput = {
 export type ContentUncheckedUpdateWithoutSeriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   type?: Prisma.EnumContentTypeFieldUpdateOperationsInput | $Enums.ContentType
   accessType?: Prisma.EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
@@ -1968,7 +1847,6 @@ export type ContentUncheckedUpdateWithoutSeriesInput = {
   country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ageRating?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   releaseDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   isPublished?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   avgRating?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -2045,7 +1923,6 @@ export type ContentCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types
 export type ContentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
-  slug?: boolean
   description?: boolean
   type?: boolean
   accessType?: boolean
@@ -2056,7 +1933,6 @@ export type ContentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   country?: boolean
   ageRating?: boolean
   releaseDate?: boolean
-  duration?: boolean
   isPublished?: boolean
   publishedAt?: boolean
   avgRating?: boolean
@@ -2077,7 +1953,6 @@ export type ContentSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type ContentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
-  slug?: boolean
   description?: boolean
   type?: boolean
   accessType?: boolean
@@ -2088,7 +1963,6 @@ export type ContentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   country?: boolean
   ageRating?: boolean
   releaseDate?: boolean
-  duration?: boolean
   isPublished?: boolean
   publishedAt?: boolean
   avgRating?: boolean
@@ -2100,7 +1974,6 @@ export type ContentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type ContentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
-  slug?: boolean
   description?: boolean
   type?: boolean
   accessType?: boolean
@@ -2111,7 +1984,6 @@ export type ContentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   country?: boolean
   ageRating?: boolean
   releaseDate?: boolean
-  duration?: boolean
   isPublished?: boolean
   publishedAt?: boolean
   avgRating?: boolean
@@ -2123,7 +1995,6 @@ export type ContentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type ContentSelectScalar = {
   id?: boolean
   title?: boolean
-  slug?: boolean
   description?: boolean
   type?: boolean
   accessType?: boolean
@@ -2134,7 +2005,6 @@ export type ContentSelectScalar = {
   country?: boolean
   ageRating?: boolean
   releaseDate?: boolean
-  duration?: boolean
   isPublished?: boolean
   publishedAt?: boolean
   avgRating?: boolean
@@ -2143,7 +2013,7 @@ export type ContentSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ContentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "slug" | "description" | "type" | "accessType" | "posterUrl" | "backdropUrl" | "thumbnailUrl" | "language" | "country" | "ageRating" | "releaseDate" | "duration" | "isPublished" | "publishedAt" | "avgRating" | "totalRatings" | "createdAt" | "updatedAt", ExtArgs["result"]["content"]>
+export type ContentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "type" | "accessType" | "posterUrl" | "backdropUrl" | "thumbnailUrl" | "language" | "country" | "ageRating" | "releaseDate" | "isPublished" | "publishedAt" | "avgRating" | "totalRatings" | "createdAt" | "updatedAt", ExtArgs["result"]["content"]>
 export type ContentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   genres?: boolean | Prisma.Content$genresArgs<ExtArgs>
   cast?: boolean | Prisma.Content$castArgs<ExtArgs>
@@ -2173,7 +2043,6 @@ export type $ContentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     title: string
-    slug: string
     description: string | null
     type: $Enums.ContentType
     accessType: $Enums.AccessType
@@ -2184,7 +2053,6 @@ export type $ContentPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     country: string | null
     ageRating: string | null
     releaseDate: Date | null
-    duration: number | null
     isPublished: boolean
     publishedAt: Date | null
     avgRating: number
@@ -2624,7 +2492,6 @@ export interface Prisma__ContentClient<T, Null = never, ExtArgs extends runtime.
 export interface ContentFieldRefs {
   readonly id: Prisma.FieldRef<"Content", 'String'>
   readonly title: Prisma.FieldRef<"Content", 'String'>
-  readonly slug: Prisma.FieldRef<"Content", 'String'>
   readonly description: Prisma.FieldRef<"Content", 'String'>
   readonly type: Prisma.FieldRef<"Content", 'ContentType'>
   readonly accessType: Prisma.FieldRef<"Content", 'AccessType'>
@@ -2635,7 +2502,6 @@ export interface ContentFieldRefs {
   readonly country: Prisma.FieldRef<"Content", 'String'>
   readonly ageRating: Prisma.FieldRef<"Content", 'String'>
   readonly releaseDate: Prisma.FieldRef<"Content", 'DateTime'>
-  readonly duration: Prisma.FieldRef<"Content", 'Int'>
   readonly isPublished: Prisma.FieldRef<"Content", 'Boolean'>
   readonly publishedAt: Prisma.FieldRef<"Content", 'DateTime'>
   readonly avgRating: Prisma.FieldRef<"Content", 'Float'>

@@ -498,6 +498,14 @@ export type MovieUncheckedUpdateOneWithoutContentNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.MovieUpdateToOneWithWhereWithoutContentInput, Prisma.MovieUpdateWithoutContentInput>, Prisma.MovieUncheckedUpdateWithoutContentInput>
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type MovieCreateWithoutContentInput = {
   id?: string
   director?: string | null

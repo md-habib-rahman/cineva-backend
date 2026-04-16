@@ -171,7 +171,6 @@ export type ContentCastScalarFieldEnum = (typeof ContentCastScalarFieldEnum)[key
 export const ContentScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  slug: 'slug',
   description: 'description',
   type: 'type',
   accessType: 'accessType',
@@ -182,7 +181,6 @@ export const ContentScalarFieldEnum = {
   country: 'country',
   ageRating: 'ageRating',
   releaseDate: 'releaseDate',
-  duration: 'duration',
   isPublished: 'isPublished',
   publishedAt: 'publishedAt',
   avgRating: 'avgRating',
