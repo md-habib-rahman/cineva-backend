@@ -49,9 +49,37 @@ const getMe = catchAsync(async (req: Request, res: Response) => {
 	})
 })
 
+const getNewToken = catchAsync(async (req: Request, res: Response) => {
+	const refreshToken = req.cookies.refreshToken
+	const betterAuthSessionToken = req.cookies["better-auth.session_token"]
+
+	if (!refreshToken) {
+		throw new Error("No refresh token provided")
+	}
+	
+	const result = await authService.getNewToken(refreshToken, betterAuthSessionToken)
+
+	const { accessToken, refreshToken: newRefreshToken, sessionToken } = result
+	tokenUtils.setAccessTokenCookie(res, accessToken)
+	tokenUtils.setRefreshTokenCookie(res, newRefreshToken)
+	tokenUtils.setBetterAuthSessionCookie(res, sessionToken)
+
+	sendResponse(res, {
+		httpStatus: 200,
+		success: true, message: "New access token generated successfully",
+		data: {
+			accessToken,
+			refreshToken: newRefreshToken,
+			sessionToken
+		}
+	})
+})
+
+
 
 export const authController = {
 	registerUser,
 	loginUser,
-	getMe
+	getMe,
+	getNewToken
 }

@@ -1,8 +1,12 @@
+
 import { userStatus } from "../../../generated/prisma/enums";
 import { IRequestUser } from "../../interfaces/user.interface";
 import { auth } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
 import { tokenUtils } from "../../utils/token";
+import { envVars } from "../../../config/env";
+import { jwtUtils } from "../../utils/jwt";
+import { JwtPayload } from "jsonwebtoken";
 
 interface RegisterUserPayload {
 	name: string;
@@ -35,7 +39,7 @@ const registerUser = async (payload: RegisterUserPayload) => {
 const loginUser = async (payload: ILoginUserPayload) => {
 
 	const { email, password } = payload
-	
+
 	const data = await auth.api.signInEmail({
 		body: {
 			email,
@@ -88,9 +92,72 @@ const getMe = async (user: IRequestUser) => {
 	return isUserExists
 }
 
+const getNewToken = async (refreshToken: string, sessionToken: string) => {
+
+	const isSessionValid = await prisma.session.findFirst({
+		where: {
+			token: sessionToken,
+			expiresAt: {
+				gt: new Date()
+			}
+		},
+		include: {
+			user: true
+		}
+	})
+
+	if (!isSessionValid) {
+		throw new Error("Invalid session")
+	}
+
+	const verifiedRefreshToken = jwtUtils.verifyToken(refreshToken, envVars.REFRESH_TOKEN_SECRET)
+
+
+	if (!verifiedRefreshToken.success && verifiedRefreshToken.error) {
+		throw new Error("Invalid refresh token")
+	}
+
+	const data = verifiedRefreshToken.data as JwtPayload
+	console.log(data)
+	const newAccessToken = tokenUtils.getAccessToken({
+		userId: data.userId,
+		email: data.email,
+		role: data.role,
+		name: data.name,
+		emailverified: data.emailVerified,
+		status: data.status,
+		isDeleted: data.isDeleted
+	})
+
+	const newRefreshToken = tokenUtils.getRefreshToken({
+		userId: data.userId,
+		email: data.email,
+		role: data.role,
+		name: data.name,
+		emailverified: data.emailVerified,
+		status: data.status,
+		isDeleted: data.isDeleted
+	})
+
+	const { token } = await prisma.session.update({
+		where: {
+			token: sessionToken
+		},
+		data: {
+			token: sessionToken,
+			expiresAt: new Date(Date.now() + 60 * 60 * 24 * 1000),
+			updatedAt: new Date()
+		}
+	})
+
+	return { accessToken: newAccessToken, refreshToken: newRefreshToken, sessionToken: token }
+
+}
+
 
 export const authService = {
 	registerUser,
 	loginUser,
-	getMe
+	getMe,
+	getNewToken
 }
