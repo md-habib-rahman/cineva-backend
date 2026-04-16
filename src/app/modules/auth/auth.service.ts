@@ -7,16 +7,9 @@ import { tokenUtils } from "../../utils/token";
 import { envVars } from "../../../config/env";
 import { jwtUtils } from "../../utils/jwt";
 import { JwtPayload } from "jsonwebtoken";
+import { IChangePasswordPayload, ILoginUserPayload, RegisterUserPayload } from "./auth.interface";
 
-interface RegisterUserPayload {
-	name: string;
-	email: string;
-	password: string;
-}
-interface ILoginUserPayload {
-	email: string;
-	password: string;
-}
+
 
 const registerUser = async (payload: RegisterUserPayload) => {
 	const { name, email, password } = payload
@@ -154,10 +147,60 @@ const getNewToken = async (refreshToken: string, sessionToken: string) => {
 
 }
 
+const changePassword = async (payload: IChangePasswordPayload, sessionToken: string) => {
+	const session = await auth.api.getSession({
+		headers: new Headers({
+			Authorization: `Bearer ${sessionToken}`
+		})
+	})
+
+	if (!session) {
+		throw new Error("Invalid session token")
+	}
+
+	const { oldPassword, newPassword } = payload
+
+	const result = await auth.api.changePassword({
+		body: {
+			currentPassword: oldPassword,
+			newPassword,
+			revokeOtherSessions: true
+		},
+		headers: new Headers({
+			Authorization: `Bearer ${sessionToken}`
+		})
+	})
+
+	const accessToken = tokenUtils.getAccessToken({
+		userId: session.user.id,
+		email: session.user.email,
+		role: session.user.role,
+		name: session.user.name,
+		emailverified: session.user.emailVerified,
+		status: session.user.status,
+		isDeleted: session.user.isDeleted
+	})
+
+	const refreshToken = tokenUtils.getRefreshToken({
+		userId: session.user.id,
+		email: session.user.email,
+		role: session.user.role,
+		name: session.user.name,
+		emailverified: session.user.emailVerified,
+		status: session.user.status,
+		isDeleted: session.user.isDeleted
+	})
+
+
+	return { ...result, accessToken, refreshToken }
+
+}
+
 
 export const authService = {
 	registerUser,
 	loginUser,
 	getMe,
-	getNewToken
+	getNewToken,
+	changePassword
 }

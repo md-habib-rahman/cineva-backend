@@ -4,6 +4,7 @@ import { authService } from "./auth.service";
 import { sendResponse } from "../../shared/sendResponse";
 import { tokenUtils } from "../../utils/token";
 
+
 const registerUser = catchAsync(async (req: Request, res: Response) => {
 	const payload = req.body
 
@@ -56,7 +57,7 @@ const getNewToken = catchAsync(async (req: Request, res: Response) => {
 	if (!refreshToken) {
 		throw new Error("No refresh token provided")
 	}
-	
+
 	const result = await authService.getNewToken(refreshToken, betterAuthSessionToken)
 
 	const { accessToken, refreshToken: newRefreshToken, sessionToken } = result
@@ -75,11 +76,33 @@ const getNewToken = catchAsync(async (req: Request, res: Response) => {
 	})
 })
 
+const changePassword = catchAsync(
+	async (req: Request, res: Response) => {
+		const payload = req.body
+		const betterAuthSessionToken = req.cookies["better-auth.session_token"]
+		const result = await authService.changePassword(payload, betterAuthSessionToken)
+
+		const { accessToken, refreshToken, token } = result
+
+		tokenUtils.setAccessTokenCookie(res, accessToken)
+		tokenUtils.setRefreshTokenCookie(res, refreshToken)
+		tokenUtils.setBetterAuthSessionCookie(res, token as string)
+
+		sendResponse(res, {
+			httpStatus: 200,
+			success: true,
+			message: "Password changed successfully!",
+			data: result
+		})
+	}
+)
+
 
 
 export const authController = {
 	registerUser,
 	loginUser,
 	getMe,
-	getNewToken
+	getNewToken,
+	changePassword
 }
