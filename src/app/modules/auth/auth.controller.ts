@@ -18,7 +18,9 @@ const registerUser = catchAsync(async (req: Request, res: Response) => {
 const loginUser = catchAsync(async (req: Request, res: Response) => {
 	const payload = req.body
 	const result = await authService.loginUser(payload)
+
 	const { accessToken, refreshToken, token, ...rest } = result
+	// console.log(accessToken, refreshToken, token)
 	tokenUtils.setAccessTokenCookie(res, accessToken)
 	tokenUtils.setRefreshTokenCookie(res, refreshToken)
 	tokenUtils.setBetterAuthSessionCookie(res, token)
@@ -35,8 +37,21 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
 	})
 })
 
+const getMe = catchAsync(async (req: Request, res: Response) => {
+	const user = req.user;
+	// console.log(user, req.user)
+	const result = await authService.getMe(user)
+	sendResponse(res, {
+		httpStatus: 200,
+		success: true,
+		message: "User data retrieved successfully",
+		data: result
+	})
+})
+
 
 export const authController = {
 	registerUser,
-	loginUser
+	loginUser,
+	getMe
 }

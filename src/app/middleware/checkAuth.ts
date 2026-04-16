@@ -29,6 +29,7 @@ export const checkAuth = (...authRoles: Role[]) => async (req: Request, res: Res
 
 			})
 			if (sessionExists && sessionExists.user) {
+
 				const user = sessionExists.user
 				const now = new Date()
 				const expiresAt = new Date(sessionExists.expiresAt)
@@ -51,31 +52,34 @@ export const checkAuth = (...authRoles: Role[]) => async (req: Request, res: Res
 					throw new Error("UNAUTHORIZED: User is deleted")
 				}
 
-				console.log(user)
-
 				if (authRoles.length > 0 && !authRoles.includes(user.role)) {
 					throw new Error("Forbidden: Insufficient permissions")
 				}
+				// console.log(user)
+				req.user = {
+					userId: user.id,
+					email: user.email,
+					role: user.role
+				}
 			}
-		}
+			const accessToken = cookieUtils.getCookie(req, "accessToken")
 
-		const accessToken = cookieUtils.getCookie(req, "accessToken")		
+			if (!accessToken) {
+				throw new Error("Unauthorized")
+			}
 
-		if (!accessToken) {
-			throw new Error("Unauthorized")
-		}
+			const verifiedToken = jwtUtils.verifyToken(accessToken, envVars.ACCESS_TOKEN_SECRET);
 
-		const verifiedToken = jwtUtils.verifyToken(accessToken, envVars.ACCESS_TOKEN_SECRET);
+			if (!verifiedToken.success) {
+				throw new Error("Invalid token")
+			}
 
-		if (!verifiedToken.success) {
-			throw new Error("Invalid token")
-		}
-		console.log(verifiedToken.data?.role)
-		if (authRoles.length > 0 && !authRoles.includes(verifiedToken.data?.role as Role)) {
-			throw new Error("Forbidden: Insufficient permissions")
-		}
+			if (authRoles.length > 0 && !authRoles.includes(verifiedToken.data?.role as Role)) {
+				throw new Error("Forbidden: Insufficient permissions")
+			}
 
-		next();
+			next();
+		}		
 	} catch (error) {
 		next(error)
 	}
