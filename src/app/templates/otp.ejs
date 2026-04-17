@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .header {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .otp-box {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .otp {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 28px;
+            letter-spacing: 4px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #4f46e5;
+            border-radius: 6px;
+        }
+        .footer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #777;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Email Verification
+        </div>
+
+        <p>Hello <strong><%= name %></strong>,</p>
+
+        <p>Use the OTP below to verify your email address. This OTP is valid for a limited time.</p>
+
+        <div class="otp-box">
+            <div class="otp"><%= otp %></div>
+        </div>
+
+        <p>If you didn’t request this, you can safely ignore this email.</p>
+
+        <div class="footer">
+            © <%= new Date().getFullYear() %> Your Company. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>

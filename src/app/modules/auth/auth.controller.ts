@@ -126,6 +126,46 @@ const logoutUser = catchAsync(async (req: Request, res: Response) => {
 	})
 })
 
+const verifyEmail = catchAsync(
+	async (req: Request, res: Response) => {
+		const { email, otp } = req.body
+		await authService.verifyEmail(email, otp)
+
+		sendResponse(res, {
+			httpStatus: 200,
+			success: true,
+			message: "Email verified successfully",
+			// data: result
+		})
+	}
+)
+
+const forgetPassword = catchAsync(
+	async (req: Request, res: Response) => {
+		const { email } = req.body
+		await authService.forgetPassword(email)
+
+		sendResponse(res, {
+			httpStatus: 200,
+			success: true,
+			message: "Password reset OTP sent to email successfully"
+		})
+	}
+)
+
+const resetPassword = catchAsync(
+	async (req: Request, res: Response) => {
+		const { email, otp, newPassword } = req.body
+		await authService.resetPassword(email, otp, newPassword)
+
+		sendResponse(res, {
+			httpStatus: 200,
+			success: true,
+			message: "Password reset successfully"
+		})
+	}
+)
+
 
 
 export const authController = {
@@ -134,5 +174,8 @@ export const authController = {
 	getMe,
 	getNewToken,
 	changePassword,
-	logoutUser
+	logoutUser,
+	verifyEmail,
+	resetPassword,
+	forgetPassword
 }

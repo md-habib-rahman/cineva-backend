@@ -13,6 +13,10 @@ interface EnvConfig {
 	REFRESH_TOKEN_SECRET: string;
 	ACCESS_TOKEN_EXPIRES_IN: string;
 	REFRESH_TOKEN_EXPIRES_IN: string;
+	APP_PASS: string,
+	APP_USER: string,
+	SMTP_PORT: string
+	SMTP_HOST: string,
 }
 
 const loadEnvVariables = (): EnvConfig => {
@@ -26,7 +30,11 @@ const loadEnvVariables = (): EnvConfig => {
 		"ACCESS_TOKEN_SECRET",
 		"REFRESH_TOKEN_SECRET",
 		"ACCESS_TOKEN_EXPIRES_IN",
-		"REFRESH_TOKEN_EXPIRES_IN"
+		"REFRESH_TOKEN_EXPIRES_IN",
+		"APP_PASS",
+		"APP_USER",
+		"SMTP_PORT",
+		"SMTP_HOST"
 	];
 
 
@@ -46,7 +54,10 @@ const loadEnvVariables = (): EnvConfig => {
 		REFRESH_TOKEN_SECRET: process.env.REFRESH_TOKEN_SECRET as string,
 		ACCESS_TOKEN_EXPIRES_IN: process.env.ACCESS_TOKEN_EXPIRES_IN as string,
 		REFRESH_TOKEN_EXPIRES_IN: process.env.REFRESH_TOKEN_EXPIRES_IN as string,
-
+		APP_PASS: process.env.APP_PASS as string,
+		APP_USER: process.env.APP_USER as string,
+		SMTP_PORT: process.env.SMTP_PORT as string,
+		SMTP_HOST: process.env.SMTP_HOST as string
 	}
 }
 
