@@ -4,7 +4,7 @@ import { authService } from "./auth.service";
 import { sendResponse } from "../../shared/sendResponse";
 import { tokenUtils } from "../../utils/token";
 import { cookieUtils } from "../../utils/cookie";
-import { envVars } from "../../../config/env";
+import { envVars } from "../../config/env";
 import { auth } from "../../lib/auth";
 
 
@@ -237,3 +237,4 @@ export const authController = {
 	googleLoginSuccess,
 	handleOauthError
 }
+

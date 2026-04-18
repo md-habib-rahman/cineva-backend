@@ -1,15 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { userStatus } from "../../../generated/prisma/enums";
 import { IRequestUser } from "../../interfaces/user.interface";
 import { auth } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
 import { tokenUtils } from "../../utils/token";
-import { envVars } from "../../../config/env";
+import { envVars } from "../../config/env";
 import { jwtUtils } from "../../utils/jwt";
 import { JwtPayload } from "jsonwebtoken";
 import { IChangePasswordPayload, ILoginUserPayload, RegisterUserPayload, SessionResponse } from "./auth.interface";
-
 
 
 const registerUser = async (payload: RegisterUserPayload) => {

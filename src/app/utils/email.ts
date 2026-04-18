@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import nodemailer from "nodemailer"
-import { envVars } from "../../config/env"
+import { envVars } from "../config/env"
 import path from "node:path";
 import ejs from 'ejs'
 

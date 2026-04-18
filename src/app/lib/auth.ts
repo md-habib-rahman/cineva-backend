@@ -4,7 +4,7 @@ import { prisma } from "./prisma";
 import { Role, userStatus } from "../../generated/prisma/enums";
 import { bearer, emailOTP } from "better-auth/plugins";
 import { sendEmail } from "../utils/email";
-import { envVars } from "../../config/env";
+import { envVars } from "../config/env";
 // If your Prisma file is located elsewhere, you can change the path
 
 
@@ -119,6 +119,10 @@ export const auth = betterAuth({
 			maxAge: 60 * 60 * 24,
 		}
 	},
+	redirectURLs: {
+		signIn: `${envVars.BETTER_AUTH_URL}/api/v1/auth/google/success`
+	},
+	trustedOrigins: [envVars.BETTER_AUTH_URL, envVars.APP_URL],
 	advanced: {
 		useSecureCookies: false,
 		cookies: {

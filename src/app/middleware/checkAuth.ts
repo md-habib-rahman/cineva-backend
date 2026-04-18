@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { cookieUtils } from "../utils/cookie";
 import { jwtUtils } from "../utils/jwt";
-import { envVars } from "../../config/env";
+import { envVars } from "../config/env";
 import { Role, userStatus } from "../../generated/prisma/enums";
 import { prisma } from "../lib/prisma";
 
@@ -79,7 +79,7 @@ export const checkAuth = (...authRoles: Role[]) => async (req: Request, res: Res
 			}
 
 			next();
-		}		
+		}
 	} catch (error) {
 		next(error)
 	}

@@ -6,7 +6,12 @@ import { sendResponse } from "../../shared/sendResponse";
 
 
 const createCast = catchAsync(async (req: Request, res: Response) => {
-	const payload = req.body
+	console.log(req.body)
+	console.log(req.file)
+	const payload = {
+		...req.body,
+		profileUrl: req.file?.path
+	}
 	const result = await castService.createCast(payload)
 	sendResponse(res, {
 		httpStatus: 201,
