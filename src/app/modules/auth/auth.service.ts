@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { userStatus } from "../../../generated/prisma/enums";
 import { IRequestUser } from "../../interfaces/user.interface";
@@ -7,7 +8,7 @@ import { tokenUtils } from "../../utils/token";
 import { envVars } from "../../../config/env";
 import { jwtUtils } from "../../utils/jwt";
 import { JwtPayload } from "jsonwebtoken";
-import { IChangePasswordPayload, ILoginUserPayload, RegisterUserPayload } from "./auth.interface";
+import { IChangePasswordPayload, ILoginUserPayload, RegisterUserPayload, SessionResponse } from "./auth.interface";
 
 
 
@@ -171,6 +172,17 @@ const changePassword = async (payload: IChangePasswordPayload, sessionToken: str
 		})
 	})
 
+	if (session.user.needPasswordChange) {
+		await prisma.user.update({
+			where: {
+				id: session.user.id,
+			},
+			data: {
+				needPasswordChange: false
+			}
+		})
+	}
+
 	const accessToken = tokenUtils.getAccessToken({
 		userId: session.user.id,
 		email: session.user.email,
@@ -191,9 +203,7 @@ const changePassword = async (payload: IChangePasswordPayload, sessionToken: str
 		isDeleted: session.user.isDeleted
 	})
 
-
 	return { ...result, accessToken, refreshToken }
-
 }
 
 const logoutUser = async (sessionToken: string) => {
@@ -277,11 +287,49 @@ const resetPassword = async (email: string, otp: string, newPassword: string) =>
 		}
 	})
 
+	if (isUserExists.needPasswordChange) {
+		await prisma.user.update({
+			where: {
+				id: isUserExists.id,
+			},
+			data: {
+				needPasswordChange: false
+			}
+		})
+	}
+
 	await prisma.session.deleteMany({
 		where: {
 			userId: isUserExists.id
 		}
 	})
+}
+
+const googleLoginSuccess = async (session: SessionResponse) => {
+
+	const isUserExists = await prisma.user.findUnique({
+		where: {
+			id: session?.user.id
+		}
+	})
+
+	if (!isUserExists) {
+		return { accessToken: "", refreshToken: "" }
+	}
+
+	const accessToken = tokenUtils.getAccessToken({
+		userId: session?.user.id,
+		role: session?.user.role,
+		name: session?.user.name
+	})
+
+	const refreshToken = tokenUtils.getRefreshToken({
+		userId: session?.user.id,
+		role: session?.user.role,
+		name: session?.user.name
+	})
+
+	return { accessToken, refreshToken }
 }
 
 
@@ -294,5 +342,6 @@ export const authService = {
 	logoutUser,
 	verifyEmail,
 	forgetPassword,
-	resetPassword
+	resetPassword,
+	googleLoginSuccess
 }

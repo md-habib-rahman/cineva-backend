@@ -17,6 +17,10 @@ interface EnvConfig {
 	APP_USER: string,
 	SMTP_PORT: string
 	SMTP_HOST: string,
+	CLIENT_ID: string,
+	CLIENT_SECRET: string,
+	GOOGLE_CALLBACK_URL: string,
+	APP_URL: string,
 }
 
 const loadEnvVariables = (): EnvConfig => {
@@ -34,7 +38,11 @@ const loadEnvVariables = (): EnvConfig => {
 		"APP_PASS",
 		"APP_USER",
 		"SMTP_PORT",
-		"SMTP_HOST"
+		"SMTP_HOST",
+		"CLIENT_ID",
+		"CLIENT_SECRET",
+		"GOOGLE_CALLBACK_URL",
+		"APP_URL",
 	];
 
 
@@ -57,7 +65,11 @@ const loadEnvVariables = (): EnvConfig => {
 		APP_PASS: process.env.APP_PASS as string,
 		APP_USER: process.env.APP_USER as string,
 		SMTP_PORT: process.env.SMTP_PORT as string,
-		SMTP_HOST: process.env.SMTP_HOST as string
+		SMTP_HOST: process.env.SMTP_HOST as string,
+		CLIENT_ID: process.env.CLIENT_ID as string,
+		CLIENT_SECRET: process.env.CLIENT_SECRET as string,
+		GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL as string,
+		APP_URL: process.env.APP_URL as string,
 	}
 }
 
